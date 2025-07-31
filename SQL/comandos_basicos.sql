@@ -116,7 +116,7 @@ CREATE DATABASE pokedex;
 USE pokedex;
 
 CREATE TABLE pokemons (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     tipo VARCHAR(50) NOT NULL,
     descricao TEXT,
@@ -125,7 +125,7 @@ CREATE TABLE pokemons (
 );
 
 CREATE TABLE estoque (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     pokemon_id INT,
     quantidade INT NOT NULL,
     localizacao VARCHAR(100),
