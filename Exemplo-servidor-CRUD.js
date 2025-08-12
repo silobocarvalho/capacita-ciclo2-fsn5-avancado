@@ -2,8 +2,6 @@ const PORT = 3000;
 //INICIO - Configuracao inicial
 const express = require("express");
 const cors = require("cors");
-const { url } = require("inspector");
-const { urlToHttpOptions } = require("url");
 
 const app = express();
 
