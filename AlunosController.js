@@ -1,3 +1,6 @@
+const { PrismaClient } = require('./generated/prisma');
+const prisma = new PrismaClient();
+
 exports.criarAluno = (req, res) => {
     const {nome, matricula, turma} = req.body
     let msg = `O aluno ${nome} criado com sucesso!`
@@ -5,10 +8,13 @@ exports.criarAluno = (req, res) => {
     res.status(201).json(msg);
 };
 
-exports.listarAlunos = (req, res) => {
-    let msg = "Todos alunos listados com sucesso!"
-    console.log(msg)
-    res.status(200).send(msg);
+exports.listarAlunos = async (req, res) => {
+    //let msg = "Todos alunos listados com sucesso!"
+    //console.log(msg)
+
+    const alunosDoBancoDeDados = await prisma.Aluno.findMany();
+    console.log(alunosDoBancoDeDados);
+    res.status(200).json(alunosDoBancoDeDados);
 };
 
 exports.buscarAlunoPorId = (req, res) => {
