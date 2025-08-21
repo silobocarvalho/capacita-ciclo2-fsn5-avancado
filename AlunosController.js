@@ -71,3 +71,50 @@ exports.deletarAluno = async (req, res) => {
     console.log(msg)
     res.status(200).send(alunoDeletado);
 };
+
+exports.testePrisma = async (req, res) => {
+    //const {id} = req.params;
+
+    /*
+    //Teste Prisma FindUnique - exige uma chave primaria no Where
+    const alunoUnico = await prisma.Aluno.findUnique({
+        where: {
+            id: 2
+        }
+    })*/
+
+    /* 
+    //Teste Prisma FindFirst - Retorna o 1o a ser encontrado
+    const aluno = await prisma.Aluno.findFirst({
+        where: {
+            nome: {
+                contains: "Joao"
+            }
+        }
+    })
+        */
+    
+    /*
+    // Contagem de alunos que estao na turma FSN5
+    let numeroAlunos = await prisma.Aluno.count({
+        where: {
+            turma: "FSN5"
+        }
+    })
+    */
+
+    /*
+    //uso do orderBy dentro do prisma
+    const alunos = await prisma.Aluno.findMany({
+        orderBy: {
+            nome: 'asc'
+        }
+    })
+        */
+
+    // SQL Puro
+    const alunos = await prisma.$queryRaw`SELECT * FROM "Aluno"`;
+    //await prisma.$queryRaw`SELECT * FROM Aluno`;
+
+    res.status(200).send(alunos);
+};
