@@ -29,7 +29,7 @@ exports.buscarAlunoPorId = async (req, res) => {
     
     const alunoDoBanco = await prisma.Aluno.findFirst({
         where:{
-            id: parseInt(id)
+            id: id
         }
     })
     
@@ -44,7 +44,7 @@ exports.atualizarAluno = async (req, res) => {
 
     const alunoAtualizado = await prisma.Aluno.update({
         where:{
-            id: parseInt(id)
+            id: id
         },
         data:{
             nome: nome,
@@ -63,7 +63,7 @@ exports.deletarAluno = async (req, res) => {
 
     const alunoDeletado = await prisma.Aluno.delete({
         where:{
-            id: parseInt(id)
+            id: id
         }
     })
 
